@@ -1,11 +1,11 @@
-function kadanesAlgorithm(array) {
-  let max = -Infinity
-	let maxSoFar = -Infinity
-	array.forEach(num => {
-		const maxWithCurr = num + maxSoFar
-		maxSoFar = Math.max(num, maxWithCurr)
-		max = Math.max(max, maxSoFar)
-	})
-	
-	return max
+function kadane(array) {
+    let maxCurr = array[0]
+    let maxGlobal = array[0]
+    for(let i = 1; i < array.length; i++){
+        maxCurr = Math.max(array[i], maxCurr + array[i])
+        if( maxCurr > maxGlobal ){
+            maxGlobal = maxCurr
+        }
+    }
+    return maxGlobal
 }
